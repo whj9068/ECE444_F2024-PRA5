@@ -29,6 +29,9 @@ def predict():
 
     if not news_article:
         return jsonify({'error': 'No article provided'}), 400
+    
+    if not isinstance(news_article, str):
+        return jsonify({'error': 'Article must be a string'}), 400
 
     # Transform the input data using the vectorizer
     transformed_data = vectorizer.transform([news_article])

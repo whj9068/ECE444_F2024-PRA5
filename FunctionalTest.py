@@ -24,6 +24,7 @@ def test_predict(article, expected_prediction):
     response = requests.post(API_URL, json=test_data)
     
     # Assertions
+    assert type(article) == str, "Article must be a string"
     assert response.status_code == 200, f"Expected status code 200 but got {response.status_code}"
     json_response = response.json()
     assert 'prediction' in json_response, "Response does not contain 'prediction' field"
